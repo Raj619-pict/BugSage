@@ -30,7 +30,13 @@
       "run_at": "document_idle"
     }
   ],
+  "web_accessible_resources": [
+    {
+      "resources": ["injected-error-listener.js"],
+      "matches": ["<all_urls>"]
+    }
+  ],
   "content_security_policy": {
-    "extension_pages": "script-src 'self' https://cdn.tailwindcss.com; object-src 'self'"
+    "extension_pages": "script-src 'self' https://cdn.tailwindcss.com/3.3.5; object-src 'self'"
   }
 }
