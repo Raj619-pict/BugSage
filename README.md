@@ -24,7 +24,7 @@
 
 1. Clone the repo:
    ```bash
-   git clone https://github.com/yourusername/bugsage.git
+   git clone https://github.com/RajPawar27/bugsage.git
    cd bugsage
    ```
 2. Edit `openai-helper.js` and replace `YOUR_OPENAI_API_KEY` with your key.

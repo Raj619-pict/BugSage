@@ -1,11 +1,9 @@
-  
-
 // File: openai-helper.js
 // Set your OpenAI API key below. This file is loaded directly in the browser,
 // so environment variables are not available.
 const OPENAI_API_KEY = 'YOUR_OPENAI_API_KEY';
 
-export async function getExplanation(errorMessage) {
+async function getExplanation(errorMessage) {
   try {
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
@@ -28,3 +26,6 @@ export async function getExplanation(errorMessage) {
     return 'Failed to fetch explanation. Check your API key or internet connection.';
   }
 }
+
+// Expose globally for scripts that aren't modules
+window.getExplanation = getExplanation;
