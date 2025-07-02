@@ -1,4 +1,14 @@
 (function () {
+  const originalConsoleError = console.error;
+  console.error = function (...args) {
+    try {
+      const message = `\u274C console.error: ${args.join(' ')}`;
+      window.postMessage({ bugsageError: message }, '*');
+    } catch (err) {
+      // ignore errors in logger
+    }
+    originalConsoleError.apply(console, args);
+  };
   window.addEventListener('error', function (e) {
     const message = `\u274C JS Error: ${e.message} at ${e.filename}:${e.lineno}`;
     window.postMessage({ bugsageError: message }, '*');
