@@ -1,24 +1,22 @@
 # 🧠 BugSage – AI-Powered Debugging Chrome Extension
 
-**BugSage** is a developer-focused Chrome extension that captures console and network errors in real-time, explains them using OpenAI, and helps web developers debug faster and smarter.
+**BugSage** captures console and network errors and explains them using OpenAI so you can debug faster.
 
 ---
 
 ## 🔧 Features
 
-- 📡 Detects JavaScript, React, and API errors in DevTools
-- 🤖 Explains error messages with GPT-4
-- 💾 Saves past errors locally for learning/reference
-- 🌐 Works across any webpage or local dev server
-- 🧠 Learns common causes and suggests possible fixes
+- 📡 Detects JavaScript, React and API errors
+- 🤖 Explains messages with GPT‑4
+- 💾 Stores errors locally for later reference
 
 ---
 
 ## 🖼️ Screenshots
 
 > 🪄 Add screenshots here after build:
-- Popup UI with error logs
-- DevTools tab with “Explain” feature
+> - Popup UI with error logs
+> - DevTools tab with "Explain" feature
 
 ---
 
@@ -27,3 +25,9 @@
 1. Clone the repo:
    ```bash
    git clone https://github.com/yourusername/bugsage.git
+   cd bugsage
+   ```
+2. Edit `openai-helper.js` and replace `YOUR_OPENAI_API_KEY` with your key.
+3. Open `chrome://extensions`, enable **Developer mode**, then choose **Load unpacked** and select this folder.
+
+You're ready to go! The extension icon should now appear in the Chrome toolbar.
