@@ -1,14 +1,17 @@
   
 
 // File: openai-helper.js
-require('dotenv').config();
-async function getExplanation(errorMessage) {
+// Set your OpenAI API key below. This file is loaded directly in the browser,
+// so environment variables are not available.
+const OPENAI_API_KEY = 'YOUR_OPENAI_API_KEY';
+
+export async function getExplanation(errorMessage) {
   try {
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization':process.env.OPENAI_API_KEY
+        'Authorization': `Bearer ${OPENAI_API_KEY}`
       },
       body: JSON.stringify({
         model: 'gpt-4',
@@ -25,5 +28,3 @@ async function getExplanation(errorMessage) {
     return 'Failed to fetch explanation. Check your API key or internet connection.';
   }
 }
-
-if (typeof module !== 'undefined') module.exports = { getExplanation };
