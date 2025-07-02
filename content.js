@@ -1,20 +1,26 @@
-// content.js
-(function () {
-  const script = document.createElement('script');
-  script.src = chrome.runtime.getURL('injected-error-listener.js');
-  script.onload = function () {
-    this.remove(); // clean up
-  };
-  (document.head || document.documentElement).appendChild(script);
-
-  // Listen for posted messages from injected script
-  window.addEventListener('message', (event) => {
-    if (event.source !== window || !event.data.bugsageError) return;
-
+chrome.devtools.network.onRequestFinished.addListener(request => {
+  const url = request.request.url;
+  if (request.response.status >= 400) {
+    const error = `⚠️ ${request.response.status} on ${url}`;
     chrome.storage.local.get('bugsage_errors', (data) => {
       const logs = data.bugsage_errors || [];
-      logs.push(event.data.bugsageError);
+      logs.push(error);
       chrome.storage.local.set({ bugsage_errors: logs });
     });
-  });
-})();
+  }
+});
+
+chrome.devtools.inspectedWindow.eval(`
+  (function() {
+    const originalConsoleError = console.error;
+    console.error = function(...args) {
+      try {
+        const message = '\u274C console.error: ' + args.join(' ');
+        window.postMessage({ bugsageError: message }, '*');
+      } catch (err) {
+        // ignore errors in logger
+      }
+      originalConsoleError.apply(console, args);
+    };
+  })();
+`);
