@@ -29,4 +29,3 @@ async function getExplanation(errorMessage) {
 
 // Expose globally for scripts that aren't modules
 window.getExplanation = getExplanation;
-

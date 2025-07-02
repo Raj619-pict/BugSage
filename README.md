@@ -24,12 +24,10 @@
 
 1. Clone the repo:
    ```bash
-   git clone https://github.com/yourusername/bugsage.git
+   git clone https://github.com/RajPawar27/bugsage.git
    cd bugsage
    ```
 2. Edit `openai-helper.js` and replace `YOUR_OPENAI_API_KEY` with your key.
 3. Open `chrome://extensions`, enable **Developer mode**, then choose **Load unpacked** and select this folder.
 
 You're ready to go! The extension icon should now appear in the Chrome toolbar.
-
-The UI uses a small `style.css` file bundled with the extension so no remote resources are required.

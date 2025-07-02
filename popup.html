@@ -1,10 +1,30 @@
+
+
+
+// File: popup.html
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BugSage</title>
-    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.tailwindcss.com/3.3.5"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              pikaRed: '#e63946',
+              pikaDark: '#b3262b',
+              pikachu: '#facc15'
+            },
+            fontFamily: {
+              pixel: ['"Press Start 2P"', 'monospace']
+            }
+          }
+        }
+      }
+    </script>
   </head>
   <body class="w-80 p-4 bg-yellow-50 text-gray-800 font-pixel">
     <h2 class="text-xl text-pikaRed font-bold mb-4 flex items-center gap-2">
@@ -20,3 +40,4 @@
     <script type="module" src="popup.js"></script>
   </body>
 </html>
+
