@@ -19,7 +19,12 @@
 > - DevTools tab with "Explain" feature
 
 ---
+## 🛠️ How It Works
 
+BugSage injects a helper script into every page. The content script loads `injected-error-listener.js`, which overrides `console.error` and attaches `error` and `unhandledrejection` listeners in the page context. Because this injection runs inside the inspected page, any `console.error` you type in DevTools is captured just like errors from your app.
+
+When the BugSage DevTools panel is open, `devtools.js` also registers `chrome.devtools.network.onRequestFinished` and `window` `error` listeners so network failures and script errors are logged while you debug.
+---
 ## 🚀 Installation (Developer Mode)
 
 1. Clone the repo:
